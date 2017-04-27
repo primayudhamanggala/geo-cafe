@@ -33,13 +33,14 @@ class NewCoffeeForm extends React.Component {
 
   render() {
     const { name, image, flavour, description } = this.state;
+    const { addCoffee } = this.props;
     return (
       <div>
         {this.state.submitted && <Redirect to={{ pathname: '/products' }} />}
         <Form
           onSubmit={(e) => {
             e.preventDefault();
-            this.props.addCoffee(this.state);
+            addCoffee(this.state);
             this.setState(
               { name: '', image: '', flavour: '', description: '', submitted: true },
             );
